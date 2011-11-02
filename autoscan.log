@@ -1,0 +1,13 @@
+autoscan: warning: missing AC_PROG_CXX wanted by: 
+	ltmain.sh:964
+	ltmain.sh:1379
+	ltmain.sh:1382
+	ltmain.sh:1387
+	ltmain.sh:1387
+	ltmain.sh:1397
+	ltmain.sh:1401
+	ltmain.sh:1404
+	ltmain.sh:1404
+	ltmain.sh:2441
+autoscan: warning: missing AC_PROG_RANLIB wanted by: 
+	ltmain.sh:2454
