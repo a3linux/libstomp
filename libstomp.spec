@@ -14,18 +14,19 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
-
+%define soname  libstomp0
 Name:           libstomp
 Version:        0.1.0
 Release:        0
 License:        Apache-2.0
 Summary:        C library used to talk the Stomp 
 Url:            https://github.com/bmanojlovic/libstomp
-Group:          BLAH
+Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildRequires:  libapr1-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -33,6 +34,24 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 libstomp is a c library used to talk the Stomp which
 is a simple to implement client protocol for
 working with ActiveMQ and other messaging systems.
+
+
+%package -n %soname
+Summary:        C library used to talk the Stomp
+Group:          Development/Libraries/C and C++
+
+%description -n %soname
+libstomp is a c library used to talk the Stomp which
+is a simple to implement client protocol for
+working with ActiveMQ and other messaging systems.
+
+%package devel
+Summary:        Development files for libstomp
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description devel
+Development files for libstomp STOMP implementation
 
 %prep
 %setup -q
@@ -45,12 +64,20 @@ make %{?_smp_mflags}
 %install
 make install DESTDIR=%buildroot
 
-%post
+%post -n %soname -p /sbin/ldconfig
 
-%postun
+%postun -n %soname -p /sbin/ldconfig
 
-%files
+%files -n %soname
 %defattr(-,root,root)
-%doc ChangeLog README COPYING
+%doc %attr(0644,root,root) ChangeLog README COPYING
+%exclude %{_libdir}/libstomp.a
+%exclude %{_libdir}/libstomp.la
+%{_libdir}/libstomp.so.*
+
+%files devel
+%defattr(-,root,root)
+%{_includedir}/stomp.h
+%{_libdir}/libstomp.so
 
 %changelog
