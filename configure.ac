@@ -11,6 +11,7 @@ AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
+AM_PROG_CC_C_O
 PKG_CHECK_MODULES([APR],[apr-1])
 
 # Checks for header files.
