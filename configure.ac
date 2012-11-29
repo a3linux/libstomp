@@ -22,5 +22,6 @@ AC_CHECK_FUNCS([strstr])
 
 
 AC_CONFIG_FILES([Makefile
-		src/Makefile])
+		src/Makefile
+		example/Makefile])
 AC_OUTPUT
