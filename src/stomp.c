@@ -418,7 +418,7 @@ APR_DECLARE(apr_status_t) stomp_read(stomp_connection *connection, stomp_frame *
 			  char endbuffer[2];
 			  apr_size_t length = 2;
 
-			  f->body_length = atoi(content_length);
+			  f->body_length = apr_atoi64(content_length);
 			  f->body = apr_pcalloc(pool, f->body_length);
 			  rc = apr_socket_recv(connection->socket, f->body, &f->body_length);
 			  CHECK_SUCCESS;

@@ -37,7 +37,7 @@ typedef struct stomp_frame {
    char *command;
    apr_hash_t *headers;
    char *body;
-   long body_length;
+   apr_int64_t body_length;
 } stomp_frame;
 
 
