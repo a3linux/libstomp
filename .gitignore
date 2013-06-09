@@ -4,7 +4,18 @@ pkginfo
 Prototype
 nagios.SPARC.pkg.tar.gz
 autom4te.cache
-
+aclocal.m4
+autoscan.log
+config.guess
+config.h.in
+config.sub
+configure
+configure.scan
+install-sh
+depcomp
+ltmain.sh
+Makefile.in
+missing
 config.log
 config.status
 daemon-init
@@ -14,3 +25,4 @@ Makefile
 *.o
 *.la
 *.lo
+*~
