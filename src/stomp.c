@@ -339,7 +339,7 @@ APR_DECLARE(apr_status_t) stomp_write(stomp_connection *connection, stomp_frame 
    // Write the body.
    if( frame->body != NULL ) {
       int body_length = frame->body_length;
-	  if(body_length < 0)
+	  if(body_length <= 0)
 		  body_length = strlen(frame->body);
       rc = stomp_write_buffer(connection, frame->body, body_length);
       CHECK_SUCCESS;
