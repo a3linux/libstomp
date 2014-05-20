@@ -17,10 +17,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#if defined(__i386__)
-#include <unistd.h>
-typedef off_t off64_t;
-#endif
 #include <apr-1/apr.h>
 #include <apr-1/apr_strings.h>
 #include "stomp.h"

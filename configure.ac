@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ([2.68])
+AC_PREREQ([2.60])
 AC_INIT([libstomp], 0.1.0, a3linux@gmail.com)
 AM_INIT_AUTOMAKE(libstomp, 0.1.0)
 AC_PROG_LIBTOOL
