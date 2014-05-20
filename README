@@ -5,19 +5,19 @@ libstomp is a c library used to talk the Stomp which is a simple to implement cl
 working with ActiveMQ and other messaging systems.
 
 Getting Started
-http://stomp.codehaus.org/Getting+Started+with+libstomp?refresh=1
+http://docs.codehaus.org/display/STOMP/Getting+Started+with+libstomp
 
 Building
-http://stomp.codehaus.org/Building+libstomp?refresh=1
+http://docs.codehaus.org/display/STOMP/Building+libstomp
 
-Examples
-http://stomp.codehaus.org/libstomp+Examples?refresh=1
+Example
+http://docs.codehaus.org/display/STOMP/libstomp+Examples
 
 We welcome contributions of all kinds, for details of how you can help
-http://stomp.codehaus.org/Contributing
+*Page doesn't exist. Needs update*
 
 Please refer to the website for details of finding the issue tracker, email lists, wiki or IRC channel
-http://stomp.codehaus.org/
+http://docs.codehaus.org/display/STOMP/C
 
 Please help us make libstomp better - we appreciate any feedback you may have.
 
