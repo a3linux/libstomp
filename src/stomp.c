@@ -17,10 +17,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#if defined(__i386__)
-#include <unistd.h>
-typedef off_t off64_t;
-#endif
 #include <apr-1/apr.h>
 #include <apr-1/apr_strings.h>
 #include "stomp.h"
@@ -319,12 +315,15 @@ APR_DECLARE(apr_status_t) stomp_write(stomp_connection *connection, stomp_frame 
 	  if(frame->body_length >= 0) {
 		  apr_pool_t *length_pool;
 		  char *length_string;
-
+   
 		  apr_pool_create(&length_pool, pool);
 		  rc = stomp_write_buffer(connection, "content-length:", 15);
 		  CHECK_SUCCESS;
 		  
-		  length_string = apr_itoa(length_pool, frame->body_length);
+          int body_length = frame->body_length;
+          if (body_length <= 0)
+              body_length = strlen(frame->body) +1;
+		  length_string = apr_itoa(length_pool, body_length);
 		  rc = stomp_write_buffer(connection, length_string, strlen(length_string));
 		  CHECK_SUCCESS;
 		  rc = stomp_write_buffer(connection, "\n", 1);
@@ -338,11 +337,11 @@ APR_DECLARE(apr_status_t) stomp_write(stomp_connection *connection, stomp_frame 
    
    // Write the body.
    if( frame->body != NULL ) {
-      int body_length = frame->body_length;
-	  if(body_length < 0)
-		  body_length = strlen(frame->body);
-      rc = stomp_write_buffer(connection, frame->body, body_length);
-      CHECK_SUCCESS;
+        int body_length = frame->body_length;
+        if(body_length <= 0)
+            body_length = strlen(frame->body) + 1;
+        rc = stomp_write_buffer(connection, frame->body, body_length);
+        CHECK_SUCCESS;
    }
    rc = stomp_write_buffer(connection, "\0\n", 2);
    CHECK_SUCCESS;
